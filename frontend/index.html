@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pairing Verification — Nixx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <button class="menu-btn" id="menuBtn" aria-label="Admin">
+      <span class="bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+    </button>
+    <div class="logo-wrap">
+      <div class="logo-badge"><span>N</span></div>
+      <div class="brand-text">
+        <span class="word">Pairing Verification</span>
+        <span class="sub">Nixx · Registry</span>
+      </div>
+    </div>
+    <span class="mode-tag" id="modeTag">Admin</span>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">Status Pairing</div>
+    <h1 class="display">Cek & kelola akses nomor</h1>
+    <p>Setiap nomor yang pernah pairing ke sistem tercatat di sini, lengkap dengan status akses-nya — aktif atau di-banned.</p>
+    <div class="mode-note">Mode admin aktif — kamu bisa menambah, mem-banned, dan menghapus nomor langsung dari daftar di bawah.</div>
+
+    <div class="stats" id="statsRow"></div>
+  </div>
+
+  <div class="listwrap">
+    <div class="list-head">
+      <h2>Nomor terdaftar</h2>
+      <span class="count" id="listCount">Memuat...</span>
+    </div>
+
+    <div id="rows"></div>
+    <div class="empty" id="emptyState">Belum ada nomor terdaftar.<br>Masuk sebagai admin buat mulai nambahin.</div>
+
+    <div class="add-row">
+      <input type="text" id="addInput" placeholder="Tambah nomor, cth: 62888xxxxxxx">
+      <button id="addBtn">Tambah</button>
+    </div>
+  </div>
+
+  <!-- overlay login admin -->
+  <div class="overlay" id="overlay">
+    <div class="login-panel">
+      <div class="eyebrow">Akses terbatas</div>
+      <h2 class="display">Masuk sebagai admin</h2>
+      <p class="desc">Kelola nomor — tambah, banned, atau hapus dari registry.</p>
+      <input type="password" id="pwInput" placeholder="Password admin">
+      <div class="err" id="pwErr">Password salah, coba lagi.</div>
+      <button id="loginBtn">Masuk</button>
+      <button class="cancel" id="cancelBtn">Batal</button>
+    </div>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>
