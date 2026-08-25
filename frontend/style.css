@@ -1,0 +1,219 @@
+:root{
+  --white:#ffffff;
+  --black:#0a0a0a;
+  --panel:#f2f2f0;
+  --line:#dedcd6;
+  --muted:#9a9a94;
+}
+*{ box-sizing:border-box; }
+body{
+  margin:0; background:var(--white); color:var(--black);
+  font-family:'IBM Plex Mono', monospace;
+  min-height:100vh;
+}
+.display{ font-family:'Space Grotesk', sans-serif; }
+
+/* ── top bar ── */
+.topbar{
+  display:flex; align-items:center; gap:16px;
+  padding:16px 20px; border-bottom:1px solid var(--line);
+  background:var(--white); position:sticky; top:0; z-index:10;
+}
+.menu-btn{
+  width:38px; height:38px; border:1.5px solid var(--black); background:var(--white);
+  border-radius:6px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; padding:0;
+  box-shadow:3px 3px 0 var(--black);
+  transition:transform .1s ease, box-shadow .1s ease, background .12s;
+}
+.menu-btn:hover{ background:var(--black); transform:translate(-1px,-1px); box-shadow:4px 4px 0 var(--black); }
+.menu-btn:active{ transform:translate(2px,2px); box-shadow:1px 1px 0 var(--black); }
+.menu-btn:hover .bar{ background:var(--white); }
+.menu-btn .bar{ width:16px; height:2px; background:var(--black); position:relative; transition:background .12s; }
+.menu-btn .bars{ display:flex; flex-direction:column; gap:4px; }
+
+/* ── logo lockup ── */
+.logo-wrap{ display:flex; align-items:center; gap:11px; }
+.logo-badge{
+  width:36px; height:36px; border-radius:8px; flex-shrink:0; position:relative;
+  background:linear-gradient(155deg, #2a2a2a 0%, #0a0a0a 55%, #000 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.5) inset,
+    0 -6px 10px rgba(255,255,255,.04) inset,
+    0 4px 10px rgba(0,0,0,.28),
+    0 1px 2px rgba(0,0,0,.35);
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.logo-badge::before{
+  content:''; position:absolute; top:0; left:0; right:0; height:55%;
+  background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0));
+  pointer-events:none;
+}
+.logo-badge span{
+  font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:16px;
+  color:var(--white); position:relative; letter-spacing:-.02em;
+  text-shadow:0 1px 1px rgba(0,0,0,.4);
+}
+.brand-text{ display:flex; flex-direction:column; line-height:1.15; }
+.brand-text .word{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:14px; letter-spacing:.01em; }
+.brand-text .sub{ font-size:10px; letter-spacing:.14em; color:var(--muted); text-transform:uppercase; }
+
+.mode-tag{
+  margin-left:auto; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  border:1px solid var(--black); padding:4px 10px; display:none; border-radius:4px;
+  box-shadow:2px 2px 0 var(--black);
+}
+body.admin .mode-tag{ display:inline-block; background:var(--black); color:var(--white); }
+
+/* ── hero ── */
+.hero{ padding:36px 24px 0; max-width:640px; margin:0 auto; }
+.hero .eyebrow{ font-size:11px; letter-spacing:.14em; color:var(--muted); text-transform:uppercase; margin-bottom:8px; }
+.hero h1{
+  font-size:clamp(26px, 6vw, 34px); margin:0 0 8px; font-weight:700;
+  letter-spacing:-0.01em; line-height:1.12;
+}
+.hero p{ margin:0; color:var(--muted); font-size:13px; letter-spacing:.01em; line-height:1.6; max-width:46ch; }
+.hero .mode-note{
+  display:none; margin-top:14px; font-size:12px; padding:9px 12px;
+  border:1px solid var(--black); border-radius:6px; background:var(--panel);
+}
+body.admin .hero .mode-note{ display:block; }
+
+/* ── stats ── */
+.stats{
+  display:flex; margin-top:24px; border:1px solid var(--black); border-radius:8px;
+  overflow:hidden; box-shadow:3px 3px 0 var(--panel);
+}
+.stat{ flex:1; padding:14px 10px; text-align:center; border-right:1px solid var(--line); }
+.stat:last-child{ border-right:none; }
+.stat .num{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:22px; line-height:1; }
+.stat .cap{ font-size:9.5px; letter-spacing:.1em; color:var(--muted); text-transform:uppercase; margin-top:5px; display:block; }
+
+/* ── list ── */
+.listwrap{ max-width:640px; margin:0 auto; padding:28px 24px 80px; }
+.list-head{
+  display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+  margin-bottom:14px;
+}
+.list-head h2{ font-family:'Space Grotesk', sans-serif; font-size:15px; margin:0; }
+.list-head .count{ font-size:11px; color:var(--muted); letter-spacing:.04em; }
+
+.entry{
+  border:1px solid var(--line); border-radius:8px; padding:13px 15px; margin-bottom:9px;
+  transition:border-color .12s;
+}
+.entry:hover{ border-color:var(--black); }
+.entry-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.entry-main{ display:flex; align-items:center; gap:10px; min-width:0; }
+.entry-idx{
+  color:var(--muted); font-size:11px; flex-shrink:0; width:20px;
+}
+.entry-num{
+  font-weight:500; letter-spacing:.02em; font-size:14px; overflow-wrap:anywhere;
+}
+.entry-num.banned{ text-decoration:line-through; color:var(--muted); }
+
+.status{ display:flex; align-items:center; gap:7px; font-size:11.5px; letter-spacing:.05em; flex-shrink:0; }
+.status .mark{ width:9px; height:9px; flex-shrink:0; position:relative; }
+.status.access .mark{
+  background:radial-gradient(circle at 32% 30%, #4a4a4a, #000 72%);
+  border-radius:50%;
+  box-shadow:0 1px 2px rgba(0,0,0,.35), 0 0 0 1px rgba(0,0,0,.06);
+}
+.status.banned .mark{ border:1.4px solid var(--black); border-radius:50%; background:var(--white); }
+.status.banned .mark::before, .status.banned .mark::after{
+  content:''; position:absolute; top:50%; left:50%; width:11px; height:1.3px; background:var(--black);
+}
+.status.banned .mark::before{ transform:translate(-50%,-50%) rotate(45deg); }
+.status.banned .mark::after{ transform:translate(-50%,-50%) rotate(-45deg); }
+
+.entry-actions{
+  display:none; gap:6px; justify-content:flex-end;
+  margin-top:11px; padding-top:11px; border-top:1px solid var(--line);
+}
+body.admin .entry-actions{ display:flex; }
+.icon-btn{
+  height:28px; padding:0 11px; border:1px solid var(--black); background:var(--white);
+  border-radius:5px;
+  cursor:pointer; font-size:11px; letter-spacing:.03em; display:flex; align-items:center; justify-content:center; gap:5px;
+  box-shadow:2px 2px 0 var(--black);
+  transition:transform .1s ease, box-shadow .1s ease, background .12s, color .12s;
+  font-family:'IBM Plex Mono', monospace;
+}
+.icon-btn:hover{ background:var(--black); color:var(--white); transform:translate(-1px,-1px); box-shadow:3px 3px 0 var(--black); }
+.icon-btn:active{ transform:translate(1px,1px); box-shadow:1px 1px 0 var(--black); }
+.icon-btn:disabled{ opacity:.5; cursor:wait; }
+
+/* ── add row (admin only) ── */
+.add-row{ display:none; gap:8px; margin-top:16px; }
+body.admin .add-row{ display:flex; }
+.add-row input{
+  flex:1; border:1px solid var(--black); background:var(--white); padding:11px 12px;
+  border-radius:5px;
+  font-family:'IBM Plex Mono', monospace; font-size:13px; outline:none;
+  box-shadow:2px 2px 0 var(--line);
+}
+.add-row input::placeholder{ color:var(--muted); }
+.add-row button{
+  border:1px solid var(--black); background:var(--black); color:var(--white);
+  padding:0 18px; font-family:'IBM Plex Mono', monospace; font-size:12px;
+  letter-spacing:.08em; text-transform:uppercase; cursor:pointer;
+  border-radius:5px; box-shadow:3px 3px 0 var(--black);
+  transition:transform .1s ease, box-shadow .1s ease, opacity .1s;
+}
+.add-row button:hover{ transform:translate(-1px,-1px); box-shadow:4px 4px 0 var(--black); }
+.add-row button:active{ transform:translate(2px,2px); box-shadow:1px 1px 0 var(--black); }
+.add-row button:disabled{ opacity:.5; cursor:wait; }
+
+.empty{ padding:36px 20px; text-align:center; color:var(--muted); font-size:12.5px; border:1px dashed var(--line); border-radius:8px; display:none; line-height:1.6; }
+
+.toast{
+  position:fixed; bottom:20px; left:50%; transform:translateX(-50%) translateY(0);
+  background:var(--black); color:var(--white); font-size:12px; padding:10px 16px;
+  border-radius:6px; box-shadow:3px 3px 0 var(--line); opacity:0; pointer-events:none;
+  transition:opacity .15s, transform .15s; z-index:30;
+}
+.toast.show{ opacity:1; transform:translateX(-50%) translateY(-6px); }
+
+/* ── admin login overlay ── */
+.overlay{
+  position:fixed; inset:0; background:rgba(10,10,10,.4);
+  display:none; align-items:flex-start; justify-content:center; z-index:20;
+}
+.overlay.open{ display:flex; }
+.login-panel{
+  background:var(--white); border:1px solid var(--black); border-radius:10px;
+  width:100%; max-width:340px; margin-top:64px; padding:28px 26px;
+  box-shadow:6px 6px 0 var(--black);
+  animation:slideDown .18s ease-out;
+}
+@keyframes slideDown{ from{ transform:translateY(-10px); opacity:0; } to{ transform:translateY(0); opacity:1; } }
+.login-panel .eyebrow{ font-size:11px; letter-spacing:.12em; color:var(--muted); text-transform:uppercase; margin-bottom:6px; }
+.login-panel h2{ font-family:'Space Grotesk',sans-serif; font-size:20px; margin:0 0 6px; }
+.login-panel .desc{ font-size:12px; color:var(--muted); margin:0 0 18px; line-height:1.5; }
+.login-panel input{
+  width:100%; border:1px solid var(--black); border-radius:5px; padding:11px 12px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:13px; outline:none; margin-bottom:10px;
+  box-shadow:2px 2px 0 var(--line);
+}
+.login-panel .err{ font-size:12px; margin:-2px 0 10px; display:none; }
+.login-panel .err.show{ display:block; }
+.login-panel button{
+  width:100%; border:1px solid var(--black); background:var(--black); color:var(--white);
+  padding:12px; font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.08em;
+  text-transform:uppercase; cursor:pointer; border-radius:5px;
+  box-shadow:3px 3px 0 var(--black);
+  transition:transform .1s ease, box-shadow .1s ease;
+}
+.login-panel button:hover{ transform:translate(-1px,-1px); box-shadow:4px 4px 0 var(--black); }
+.login-panel button:active{ transform:translate(2px,2px); box-shadow:1px 1px 0 var(--black); }
+.login-panel button:disabled{ opacity:.5; cursor:wait; }
+.login-panel .cancel{
+  background:var(--white); color:var(--black); margin-top:10px;
+  box-shadow:3px 3px 0 var(--line);
+}
+.login-panel .cancel:hover{ box-shadow:4px 4px 0 var(--line); }
+
+@media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
