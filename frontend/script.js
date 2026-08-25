@@ -15,15 +15,6 @@ const pwErr = document.getElementById("pwErr");
 const loginBtn = document.getElementById("loginBtn");
 const addBtn = document.getElementById("addBtn");
 const addInput = document.getElementById("addInput");
-const debugOutput = document.getElementById("debugOutput");
-
-// ── tampilin raw JSON response terakhir ke panel debug ──
-function showDebug(payload, status, isOk) {
-  if (!debugOutput) return;
-  debugOutput.classList.remove("is-error", "is-ok");
-  debugOutput.classList.add(isOk ? "is-ok" : "is-error");
-  debugOutput.textContent = `HTTP ${status}\n` + JSON.stringify(payload, null, 2);
-}
 
 // ── toast kecil buat feedback aksi ──
 function toast(msg) {
@@ -108,15 +99,13 @@ async function callAdmin(payload, btn) {
       body: JSON.stringify(payload),
     });
     const json = await resp.json();
-    showDebug(json, resp.status, resp.ok);
     if (!resp.ok) {
       toast(json.error || "Gagal, coba lagi");
       if (resp.status === 401) exitAdmin();
       return null;
     }
     return json;
-  } catch (err) {
-    showDebug({ error: String(err) }, "network error", false);
+  } catch {
     toast("Gagal konek ke server");
     return null;
   } finally {
@@ -190,7 +179,6 @@ loginBtn.addEventListener("click", async () => {
       body: JSON.stringify({ action: "login", password }),
     });
     const json = await resp.json();
-    showDebug(json, resp.status, resp.ok);
     if (resp.ok) {
       overlay.classList.remove("open");
       enterAdmin();
