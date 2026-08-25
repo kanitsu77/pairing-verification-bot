@@ -2,6 +2,11 @@
   "rewrites": [
     { "source": "/", "destination": "/frontend/index.html" },
     { "source": "/style.css", "destination": "/frontend/style.css" },
-    { "source": "/script.js", "destination": "/frontend/script.js" }
+    { "source": "/script.js", "destination": "/frontend/script.js" },
+    { "source": "/ceknomor", "destination": "/api/action?type=cek" },
+    { "source": "/add", "destination": "/api/action?type=add" },
+    { "source": "/del", "destination": "/api/action?type=del" },
+    { "source": "/ban", "destination": "/api/action?type=ban" },
+    { "source": "/unban", "destination": "/api/action?type=unban" }
   ]
 }
