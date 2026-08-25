@@ -168,18 +168,6 @@ body.admin .add-row{ display:flex; }
 
 .empty{ padding:36px 20px; text-align:center; color:var(--muted); font-size:12.5px; border:1px dashed var(--line); border-radius:8px; display:none; line-height:1.6; }
 
-/* ── debug box (admin only) ── */
-.debug-box{ display:none; margin-top:18px; }
-body.admin .debug-box{ display:block; }
-.debug-label{ font-size:10.5px; letter-spacing:.08em; color:var(--muted); text-transform:uppercase; margin-bottom:6px; }
-#debugOutput{
-  background:var(--black); color:#e8e8e0; font-family:'IBM Plex Mono', monospace;
-  font-size:11.5px; line-height:1.6; padding:12px 14px; border-radius:6px;
-  white-space:pre-wrap; word-break:break-all; margin:0; max-height:220px; overflow-y:auto;
-}
-#debugOutput.is-error{ color:#ff8f8f; }
-#debugOutput.is-ok{ color:#8fffb0; }
-
 .toast{
   position:fixed; bottom:20px; left:50%; transform:translateX(-50%) translateY(0);
   background:var(--black); color:var(--white); font-size:12px; padding:10px 16px;
@@ -229,4 +217,3 @@ body.admin .debug-box{ display:block; }
 .login-panel .cancel:hover{ box-shadow:4px 4px 0 var(--line); }
 
 @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
-  
